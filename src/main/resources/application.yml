@@ -1,0 +1,98 @@
+spring:
+  application:
+    name: RoutineHelper
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
+interval.check: 1
+interval.alarm: 10
+interval.warn: 30
+interval.notify: 120
+maxTaskAge: 3600
+audio-directory: 'Sounds'
+routines:
+- name: Nighttime
+  tasks:
+  - name: Medicine
+    notify-time: '18:45:00'
+    warning-time: '19:00:00'
+    alarm-time: '19:15:00'
+    users:
+    - ChildOne
+    - ChildTwo
+  - name: Bedtime
+    notify-time: '20:30:00'
+    warning-time: '20:45:00'
+    alarm-time: '21:00:00'
+    users:
+    - ChildOne
+  - name: Bedtime
+    notify-time: '19:00:00'
+    warning-time: '19:15:00'
+    alarm-time: '19:30:00'
+    users:
+    - ChildTwo
+  days:
+  - MONDAY
+  - TUESDAY
+  - WEDNESDAY
+  - THURSDAY
+  - FRIDAY
+  - SATURDAY
+  - SUNDAY
+- name: Morning
+  tasks:
+  - name: Wake Up
+    notify-time: 07:30:00
+    warning-time: 07:35:00
+    alarm-time: 07:40:00
+    users:
+    - ChildOne
+    - ChildTwo
+  - name: Get Dressed
+    notify-time: 07:35:00
+    warning-time: 07:37:30
+    alarm-time: 07:40:00
+    users:
+    - ChildOne
+    - ChildTwo
+  - name: Start Breakfast
+    notify-time: 07:35:00
+    warning-time: 07:40:00
+    alarm-time: 07:44:00
+    users:
+    - ChildOne
+    - ChildTwo
+  - name: Finish Breakfast
+    notify-time: 07:45:00
+    warning-time: 07:50:00
+    alarm-time: 07:53:00
+    users:
+    - ChildOne
+    - ChildTwo
+  days:
+  - MONDAY
+  - TUESDAY
+  - WEDNESDAY
+  - THURSDAY
+  - FRIDAY
+- name: Morning
+  tasks:
+  - name: Get Dressed
+    notify-time: 08:30:00
+    warning-time: 08:34:00
+    alarm-time: 08:38:00
+    users:
+    - ParentOne
+  - name: Leave for Work
+    notify-time: 08:38:00
+    warning-time: 08:42:30
+    alarm-time: 08:45:00
+    users:
+    - ParentOne
+  days:
+  - MONDAY
+  - TUESDAY
+  - WEDNESDAY
+  - THURSDAY
+  - FRIDAY
