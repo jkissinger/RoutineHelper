@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import net.peachmonkey.RoutineUtilities.TaskStatus;
-import net.peachmonkey.audio.Sound;
+import net.peachmonkey.RoutineUtils.TaskStatus;
+import net.peachmonkey.audio.Announcer;
 import net.peachmonkey.model.IncompleteTask;
 import net.peachmonkey.properties.ApplicationProperties;
 
@@ -21,9 +21,9 @@ public class RoutineMonitor implements Runnable {
 	@Autowired
 	private ApplicationProperties properties;
 	@Autowired
-	private RoutineUtilities utils;
+	private RoutineUtils utils;
 	@Autowired
-	private Sound sound;
+	private Announcer announcer;
 	private int iterations = 0;
 
 	@Override
@@ -33,7 +33,7 @@ public class RoutineMonitor implements Runnable {
 			for (IncompleteTask task : tasks) {
 				if (iterations % getInterval(task.getStatus()) == 0) {
 					LOGGER.info(task.getStatus() + ": Task [{}] for [{}]", task.getName(), task.getUser());
-					sound.announceTask(task.getUser(), task.getName(), task.getStatus());
+					announcer.announceTask(task.getUser(), task.getName(), task.getStatus());
 				}
 			}
 

@@ -11,8 +11,6 @@ public class Application {
 	private static final Logger LOGGER = LogManager.getLogger();
 
 	public static void main(String[] args) {
-		LOGGER.info("Started App");
 		SpringApplication.run(Application.class, args);
-		LOGGER.info("Started App");
 	}
 }

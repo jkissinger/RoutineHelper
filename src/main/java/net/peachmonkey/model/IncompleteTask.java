@@ -1,6 +1,6 @@
 package net.peachmonkey.model;
 
-import net.peachmonkey.RoutineUtilities.TaskStatus;
+import net.peachmonkey.RoutineUtils.TaskStatus;
 
 public class IncompleteTask {
 

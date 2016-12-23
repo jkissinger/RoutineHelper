@@ -11,12 +11,21 @@ import java.util.Objects;
 
 public class RoutineTask {
 
+	private Routine routine;
 	private String name;
 	private LocalTime notifyTime;
 	private LocalTime warningTime;
 	private LocalTime alarmTime;
 	private Map<String, LocalDateTime> completionTimes = Collections.synchronizedMap(new HashMap<>());
 	private List<String> users = new ArrayList<>();
+
+	public Routine getRoutine() {
+		return routine;
+	}
+
+	public void setRoutine(Routine routine) {
+		this.routine = routine;
+	}
 
 	public String getName() {
 		return name;
@@ -80,7 +89,7 @@ public class RoutineTask {
 
 	@Override
 	public String toString() {
-		return "RoutineTask [name=" + name + ", notifyTime=" + notifyTime + ", warningTime=" + warningTime
-				+ ", alarmTime=" + alarmTime + ", completionTimes=" + completionTimes + ", users=" + users + "]";
+		return "RoutineTask [name=" + name + ", notifyTime=" + notifyTime + ", warningTime=" + warningTime + ", alarmTime=" + alarmTime
+				+ ", completionTimes=" + completionTimes + ", users=" + users + "]";
 	}
 }

@@ -21,13 +21,13 @@ public class PlaySoundTask implements Runnable {
 
 	private static final Logger LOGGER = LogManager.getLogger();
 	@Autowired
-	private Sound sound;
+	private Announcer announcer;
 
 	@Override
 	public void run() {
 		try {
 			while (!Thread.currentThread().isInterrupted()) {
-				play(sound.getNextSound());
+				play(announcer.getNextSound());
 			}
 		} catch (InterruptedException e) {
 			LOGGER.error(e);

@@ -9,11 +9,11 @@ import java.util.concurrent.LinkedBlockingQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import net.peachmonkey.RoutineUtilities.TaskStatus;
+import net.peachmonkey.RoutineUtils.TaskStatus;
 import net.peachmonkey.properties.ApplicationProperties;
 
 @Component
-public class Sound {
+public class Announcer {
 
 	@Autowired
 	private ApplicationProperties properties;
