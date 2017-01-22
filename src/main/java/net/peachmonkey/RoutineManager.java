@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import net.peachmonkey.audio.Announcer;
+import net.peachmonkey.controller.RoutineHelperController;
 import net.peachmonkey.model.IncompleteTask;
 import net.peachmonkey.model.Routine;
 import net.peachmonkey.model.RoutineTask;
@@ -26,20 +27,24 @@ public class RoutineManager {
 	private RoutineUtils utils;
 	@Autowired
 	private ApplicationProperties properties;
+	@Autowired
+	private RoutineHelperController controller;
 
-	public void markNextTaskCompleteForUser(String user, boolean announce) {
+	public boolean markNextTaskCompleteForUser(String user, boolean announce) {
 		for (IncompleteTask task : utils.getIncompleteTasksUniquePerUser()) {
 			if (task.getUser().equalsIgnoreCase(user)) {
 				task.getActualTask().setLastCompletedTime(user, LocalDateTime.now());
 				if (announce) {
 					announcer.announceTaskCompletion(user, task.getStatus());
+					controller.completeTask(task);
 				}
-				LOGGER.debug("Logged completion of task [{}] for [{}].", task.getName(), user.toUpperCase());
-				return;
+				LOGGER.trace("Logged completion of task [{}] for [{}].", task.getName(), user.toUpperCase());
+				return true;
 			}
 		}
 
 		LOGGER.debug("No incomplete tasks for user [{}].", user);
+		return false;
 	}
 
 	public void markAllTasksComplete(String user) {

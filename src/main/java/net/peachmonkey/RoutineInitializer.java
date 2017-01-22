@@ -13,7 +13,9 @@ import org.springframework.context.SmartLifecycle;
 import org.springframework.stereotype.Component;
 
 import net.peachmonkey.audio.PlaySoundTask;
+import net.peachmonkey.controller.ConsoleController;
 import net.peachmonkey.properties.ApplicationProperties;
+import net.peachmonkey.view.RoutineHelperTrayIcon;
 
 @Component
 public class RoutineInitializer implements SmartLifecycle {
@@ -23,6 +25,10 @@ public class RoutineInitializer implements SmartLifecycle {
 	private ApplicationProperties properties;
 	@Autowired
 	private ApplicationContext context;
+	@Autowired
+	private RoutineHelperTrayIcon trayIcon;
+	@Autowired
+	private ConsoleController consoleController;
 	private boolean running = false;
 	private ScheduledExecutorService scheduledExecutors;
 	private ExecutorService executorService = Executors.newFixedThreadPool(2);
@@ -34,12 +40,20 @@ public class RoutineInitializer implements SmartLifecycle {
 
 	@Override
 	public void start() {
+		LOGGER.info("Initialized Routine Monitor");
+		if (consoleController.isConsoleAvailable()) {
+			executorService.submit(consoleController);
+		}
+		try {
+			trayIcon.init();
+		} catch (Exception e) {
+			LOGGER.error("Failed to initialize TrayIcon.", e);
+			throw new RuntimeException("Failed to initialize TrayIcon");
+		}
+		executorService.submit(context.getBean(PlaySoundTask.class));
 		scheduledExecutors = Executors.newSingleThreadScheduledExecutor();
 		RoutineMonitor monitor = context.getBean(RoutineMonitor.class);
 		scheduledExecutors.scheduleAtFixedRate(monitor, properties.getCheckInterval(), properties.getCheckInterval(), TimeUnit.SECONDS);
-		LOGGER.info("Initialized Routine Monitor");
-		executorService.submit(context.getBean(InputMonitor.class));
-		executorService.submit(context.getBean(PlaySoundTask.class));
 		running = true;
 	}
 

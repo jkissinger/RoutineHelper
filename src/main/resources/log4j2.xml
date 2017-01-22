@@ -12,8 +12,8 @@
         </Console>
         <RollingFile
             name="RollingFile"
-            fileName="E:/Logs/${app-name}.log"
-            filePattern="E:/Logs/archive/${app-name}-%d{MM-dd-yyyy}-%i.log">
+            fileName="Logs/${app-name}.log"
+            filePattern="Logs/archive/${app-name}-%d{MM-dd-yyyy}-%i.log">
             <PatternLayout>
                 <Pattern>${pattern-layout}</Pattern>
             </PatternLayout>
@@ -26,10 +26,14 @@
     <Loggers>
         <Logger
             name="net.peachmonkey"
+            level="debug">
+            <AppenderRef ref="Console" />
+        </Logger>
+        <Logger
+            name="net.peachmonkey"
             level="trace"
             additivity="false">
             <AppenderRef ref="RollingFile" />
-            <AppenderRef ref="Console" />
         </Logger>
         <Root level="warn">
             <AppenderRef ref="RollingFile" />

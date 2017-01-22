@@ -24,6 +24,10 @@ public class ApplicationProperties extends SelfLoggingProperties {
 	private Path audioDirectory;
 	@Value("${maxTaskAge:3600}")
 	private int maxTaskAge;
+	@Value("${trayIconImage:icon.png}")
+	private String trayIconImage;
+	@Value("${spring.application.name}")
+	private String applicationName;
 	private List<Routine> routines = new ArrayList<>();
 
 	public int getCheckInterval() {
@@ -52,6 +56,14 @@ public class ApplicationProperties extends SelfLoggingProperties {
 
 	public int getMaxTaskAge() {
 		return maxTaskAge;
+	}
+
+	public String getTrayIconImage() {
+		return trayIconImage;
+	}
+
+	public String getApplicationName() {
+		return applicationName;
 	}
 
 	public List<Routine> getRoutines() {

@@ -1,5 +1,6 @@
-package net.peachmonkey;
+package net.peachmonkey.controller;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import org.apache.logging.log4j.LogManager;
@@ -7,8 +8,10 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import net.peachmonkey.RoutineManager;
+
 @Component
-public class InputMonitor implements Runnable {
+public class ConsoleController implements Runnable {
 
 	private static final Logger LOGGER = LogManager.getLogger();
 	private static final String COMPLETE = "complete_all";
@@ -26,7 +29,7 @@ public class InputMonitor implements Runnable {
 			System.out.println("'username complete_all' - Completes all valid incomplete tasks for the given user.");
 			System.out.println("'undo username' - Marks the most recently completed valid task as incomplete for the given user.");
 			System.out.println("'routine delay routine-name delay-in-seconds' - Completes all valid incomplete tasks for the given user.");
-			while (!Thread.currentThread().isInterrupted()) {
+			while (!Thread.currentThread().isInterrupted() && scanInput.hasNextLine()) {
 				String data = scanInput.nextLine().toLowerCase();
 				if (data.contains(COMPLETE)) {
 					String user = data.replace(COMPLETE, "").trim();
@@ -42,6 +45,16 @@ public class InputMonitor implements Runnable {
 			}
 		} catch (Exception e) {
 			LOGGER.error("Exception in input thread.", e);
+		}
+	}
+
+	public boolean isConsoleAvailable() {
+		try {
+			System.in.available();
+			return true;
+		} catch (IOException e) {
+			LOGGER.error(e);
+			return false;
 		}
 	}
 }

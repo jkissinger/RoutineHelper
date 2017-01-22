@@ -183,4 +183,25 @@ public class RoutineUtils {
 		tasks.removeIf(t -> !getUsersLowerCase(t).contains(user.toLowerCase()));
 		return tasks;
 	}
+
+	public Set<String> getAllUsers() {
+		Set<String> users = new HashSet<>();
+		List<RoutineTask> tasks = getAllTasks(true);
+		for (RoutineTask task : tasks) {
+			users.addAll(task.getUsers());
+		}
+		return users;
+	}
+
+	public String getLabel(IncompleteTask task) {
+		return task.getUser() + " - " + task.getName();
+	}
+
+	public String getUserFromLabel(String label) {
+		return label.split("-")[0].trim();
+	}
+
+	public String getTaskFromLabel(String label) {
+		return label.split("-")[1].trim();
+	}
 }

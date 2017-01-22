@@ -11,12 +11,29 @@ interval.notify: 120
 maxTaskAge: 3600
 audio-directory: 'Sounds'
 routines:
+- name: Simple
+  tasks:
+  - name: Simple
+    notify-time: '16:45:00'
+    warning-time: '16:55:00'
+    alarm-time: '17:00:00'
+    users:
+    - ChildOne
+    - ChildTwo
+  days:
+  - MONDAY
+  - TUESDAY
+  - WEDNESDAY
+  - THURSDAY
+  - FRIDAY
+  - SATURDAY
+  - SUNDAY
 - name: Nighttime
   tasks:
   - name: Medicine
-    notify-time: '18:45:00'
-    warning-time: '19:00:00'
-    alarm-time: '19:15:00'
+    notify-time: '14:15:00'
+    warning-time: '14:16:00'
+    alarm-time: '14:17:00'
     users:
     - ChildOne
     - ChildTwo
