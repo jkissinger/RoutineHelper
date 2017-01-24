@@ -19,13 +19,17 @@ public class RoutineHelperController {
 	private RoutineUtils utils;
 
 	public void displayTask(IncompleteTask task) {
+		displayNotification(task);
+		addMenuItem(task);
+	}
+
+	private void displayNotification(IncompleteTask task) {
 		String taskDescription = task.getUser() + " " + task.getName();
 		MessageType messageType = MessageType.WARNING;
 		if (task.getStatus() == TaskStatus.NOTIFY) {
 			messageType = MessageType.INFO;
 		}
 		trayIcon.showMessage("Task - " + task.getStatus(), taskDescription, messageType);
-		addMenuItem(task);
 	}
 
 	private void addMenuItem(IncompleteTask task) {

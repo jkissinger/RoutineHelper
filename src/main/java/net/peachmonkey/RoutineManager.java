@@ -36,8 +36,8 @@ public class RoutineManager {
 				task.getActualTask().setLastCompletedTime(user, LocalDateTime.now());
 				if (announce) {
 					announcer.announceTaskCompletion(user, task.getStatus());
-					controller.completeTask(task);
 				}
+				controller.completeTask(task);
 				LOGGER.trace("Logged completion of task [{}] for [{}].", task.getName(), user.toUpperCase());
 				return true;
 			}
