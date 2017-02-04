@@ -2,7 +2,7 @@
 <Configuration status="WARN">
     <Properties>
         <Property name="app-name">routine-helper</Property>
-        <Property name="pattern-layout">%d{HH:mm:ss.SSS} [%t] [%p] %c - %m%n</Property>
+        <Property name="pattern-layout">%d{HH:mm:ss.SSS} [%t] [%p] %c %M (%F:%L) - %m%n</Property>
     </Properties>
     <Appenders>
         <Console
