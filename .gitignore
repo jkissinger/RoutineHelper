@@ -52,3 +52,5 @@ Temporary Items
 target
 /Logs/
 /copy.bat
+/.apt_generated/
+/bin/

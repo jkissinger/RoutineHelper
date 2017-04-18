@@ -1,0 +1,5 @@
+13:22:45.063 [main] [INFO] net.peachmonkey.Application.logStarting(StartupInfoLogger.java:48) - Starting Application on Ironsides with PID 17072 (E:\Code\routine-helper\routine-helper-backend\target\classes started by azure in E:\Code\routine-helper\routine-helper-backend)
+13:22:45.067 [main] [DEBUG] net.peachmonkey.Application.logStarting(StartupInfoLogger.java:51) - Running with Spring Boot v1.5.2.RELEASE, Spring v4.3.7.RELEASE
+13:22:45.068 [main] [INFO] net.peachmonkey.Application.logStartupProfileInfo(SpringApplication.java:637) - No active profile set, falling back to default profiles: default
+13:22:49.895 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties.logField(SelfLoggingProperties.java:44) - applicationName=[RoutineHelper]
+13:22:50.686 [main] [INFO] net.peachmonkey.Application.logStarted(StartupInfoLogger.java:57) - Started Application in 5.938 seconds (JVM running for 6.724)

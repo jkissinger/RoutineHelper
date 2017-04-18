@@ -1,0 +1,43 @@
+@import '~https://fonts.googleapis.com/icon?family=Material+Icons';
+@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+md-toolbar-row {
+  justify-content: space-between;
+}
+
+p {
+  margin: 16px;
+}
+
+md-grid-list {
+  max-width: 1403px;
+  margin: 16px;
+}
+
+md-sidenav-layout {
+  height: 100vh;
+}
+
+md-sidenav {
+  width: 320px;
+}
+
+.accent {
+  background-color: yellow;
+}
+
+.example-button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

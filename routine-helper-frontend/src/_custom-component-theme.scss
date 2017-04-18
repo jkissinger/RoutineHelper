@@ -1,0 +1,14 @@
+@import '~@angular/material/core/theming/all-theme';
+
+// Define a mixin that accepts a theme and outputs the color styles for the component.
+@mixin deeppurple-amber-theme($theme) {
+  // Extract whichever individual palettes you need from the theme.
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  // Use md-color to extract individual colors from a palette as necessary.
+  .deeppurple-amber {
+    background-color: md-color($primary);
+    border-color: md-color($accent, A400);
+  }
+}

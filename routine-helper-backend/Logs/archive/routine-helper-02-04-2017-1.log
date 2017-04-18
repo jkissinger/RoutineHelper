@@ -1,0 +1,143 @@
+11:00:29.832 [main] [INFO] net.peachmonkey.Application logStarting (StartupInfoLogger.java:48) - Starting Application on Ironsides with PID 17768 (E:\Code\routine-helper\routine-helper-backend\target\classes started by azure in E:\Code\routine-helper\routine-helper-backend)
+11:00:29.834 [main] [DEBUG] net.peachmonkey.Application logStarting (StartupInfoLogger.java:51) - Running with Spring Boot v1.4.4.RELEASE, Spring v4.3.6.RELEASE
+11:00:29.834 [main] [INFO] net.peachmonkey.Application logStartupProfileInfo (SpringApplication.java:662) - No active profile set, falling back to default profiles: default
+11:00:34.935 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) - checkInterval=[1]
+11:00:34.935 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) - notifyInterval=[120]
+11:00:34.936 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) - warnInterval=[30]
+11:00:34.936 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) - alarmInterval=[10]
+11:00:34.936 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) - audioDirectory=[Sounds]
+11:00:34.936 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) - maxTaskAge=[3600]
+11:00:34.936 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) - trayIconImage=[icon.png]
+11:00:34.936 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) - applicationName=[RoutineHelper]
+11:00:34.937 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) - routines:
+11:00:34.937 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -   name=[Simple]
+11:00:34.937 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -   tasks:
+11:00:34.937 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     routine=[null]
+11:00:34.937 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     name=[Simple]
+11:00:34.938 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     notifyTime=[16:45:00.000000001]
+11:00:34.939 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     warningTime=[16:55:00.000000001]
+11:00:34.939 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     alarmTime=[17:00:00.000000001]
+11:00:34.939 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     completionTimes=[{}]
+11:00:34.940 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -     users:
+11:00:34.940 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -       [ChildOne]
+11:00:34.940 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -       [ChildTwo]
+11:00:34.940 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -   days:
+11:00:34.941 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [MONDAY]
+11:00:34.941 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [TUESDAY]
+11:00:34.941 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [WEDNESDAY]
+11:00:34.941 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [THURSDAY]
+11:00:34.941 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [FRIDAY]
+11:00:34.941 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [SATURDAY]
+11:00:34.942 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [SUNDAY]
+11:00:34.942 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -   holidays:
+11:00:34.942 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -   name=[Nighttime]
+11:00:34.942 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -   tasks:
+11:00:34.942 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     routine=[null]
+11:00:34.942 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     name=[Medicine]
+11:00:34.943 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     notifyTime=[14:15:00.000000001]
+11:00:34.943 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     warningTime=[14:16:00.000000001]
+11:00:34.943 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     alarmTime=[14:17:00.000000001]
+11:00:34.943 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     completionTimes=[{}]
+11:00:34.943 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -     users:
+11:00:34.943 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -       [ChildOne]
+11:00:34.944 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -       [ChildTwo]
+11:00:34.944 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     routine=[null]
+11:00:34.944 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     name=[Bedtime]
+11:00:34.944 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     notifyTime=[20:30:00.000000001]
+11:00:34.944 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     warningTime=[20:45:00.000000001]
+11:00:34.944 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     alarmTime=[21:00:00.000000001]
+11:00:34.945 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     completionTimes=[{}]
+11:00:34.945 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -     users:
+11:00:34.945 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -       [ChildOne]
+11:00:34.945 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     routine=[null]
+11:00:34.945 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     name=[Bedtime]
+11:00:34.945 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     notifyTime=[19:00:00.000000001]
+11:00:34.945 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     warningTime=[19:15:00.000000001]
+11:00:34.946 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     alarmTime=[19:30:00.000000001]
+11:00:34.946 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     completionTimes=[{}]
+11:00:34.946 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -     users:
+11:00:34.946 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -       [ChildTwo]
+11:00:34.946 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -   days:
+11:00:34.946 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [MONDAY]
+11:00:34.947 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [TUESDAY]
+11:00:34.947 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [WEDNESDAY]
+11:00:34.947 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [THURSDAY]
+11:00:34.947 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [FRIDAY]
+11:00:34.947 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [SATURDAY]
+11:00:34.947 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [SUNDAY]
+11:00:34.948 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -   holidays:
+11:00:34.948 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -   name=[Morning]
+11:00:34.948 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -   tasks:
+11:00:34.948 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     routine=[null]
+11:00:34.948 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     name=[Wake Up]
+11:00:34.948 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     notifyTime=[07:30:00.000000001]
+11:00:34.948 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     warningTime=[07:35:00.000000001]
+11:00:34.949 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     alarmTime=[07:40:00.000000001]
+11:00:34.949 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     completionTimes=[{}]
+11:00:34.949 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -     users:
+11:00:34.949 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -       [ChildOne]
+11:00:34.949 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -       [ChildTwo]
+11:00:34.949 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     routine=[null]
+11:00:34.950 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     name=[Get Dressed]
+11:00:34.950 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     notifyTime=[07:35:00.000000001]
+11:00:34.950 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     warningTime=[07:37:30.000000001]
+11:00:34.950 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     alarmTime=[07:40:00.000000001]
+11:00:34.950 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     completionTimes=[{}]
+11:00:34.951 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -     users:
+11:00:34.951 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -       [ChildOne]
+11:00:34.951 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -       [ChildTwo]
+11:00:34.951 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     routine=[null]
+11:00:34.951 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     name=[Start Breakfast]
+11:00:34.951 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     notifyTime=[07:35:00.000000001]
+11:00:34.952 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     warningTime=[07:40:00.000000001]
+11:00:34.952 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     alarmTime=[07:44:00.000000001]
+11:00:34.952 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     completionTimes=[{}]
+11:00:34.952 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -     users:
+11:00:34.952 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -       [ChildOne]
+11:00:34.953 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -       [ChildTwo]
+11:00:34.953 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     routine=[null]
+11:00:34.953 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     name=[Finish Breakfast]
+11:00:34.953 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     notifyTime=[07:45:00.000000001]
+11:00:34.953 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     warningTime=[07:50:00.000000001]
+11:00:34.953 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     alarmTime=[07:53:00.000000001]
+11:00:34.954 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     completionTimes=[{}]
+11:00:34.954 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -     users:
+11:00:34.954 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -       [ChildOne]
+11:00:34.954 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -       [ChildTwo]
+11:00:34.955 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -   days:
+11:00:34.956 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [MONDAY]
+11:00:34.956 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [TUESDAY]
+11:00:34.956 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [WEDNESDAY]
+11:00:34.956 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [THURSDAY]
+11:00:34.956 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [FRIDAY]
+11:00:34.956 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -   holidays:
+11:00:34.957 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -   name=[Morning]
+11:00:34.957 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -   tasks:
+11:00:34.957 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     routine=[null]
+11:00:34.957 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     name=[Get Dressed]
+11:00:34.957 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     notifyTime=[08:30:00.000000001]
+11:00:34.957 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     warningTime=[08:34:00.000000001]
+11:00:34.958 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     alarmTime=[08:38:00.000000001]
+11:00:34.958 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     completionTimes=[{}]
+11:00:34.958 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -     users:
+11:00:34.958 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -       [ParentOne]
+11:00:34.959 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     routine=[null]
+11:00:34.959 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     name=[Leave for Work]
+11:00:34.959 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     notifyTime=[08:38:00.000000001]
+11:00:34.959 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     warningTime=[08:42:30.000000001]
+11:00:34.959 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     alarmTime=[08:45:00.000000001]
+11:00:34.959 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:44) -     completionTimes=[{}]
+11:00:34.960 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -     users:
+11:00:34.960 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -       [ParentOne]
+11:00:34.960 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -   days:
+11:00:34.960 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [MONDAY]
+11:00:34.960 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [TUESDAY]
+11:00:34.960 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [WEDNESDAY]
+11:00:34.960 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [THURSDAY]
+11:00:34.961 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logClass (SelfLoggingProperties.java:26) -     [FRIDAY]
+11:00:34.961 [main] [INFO] net.peachmonkey.properties.SelfLoggingProperties logField (SelfLoggingProperties.java:39) -   holidays:
+11:00:35.067 [main] [INFO] net.peachmonkey.ApplicationConfig imageIcon (ApplicationConfig.java:38) - Icon URL file:/E:/Code/routine-helper/routine-helper-backend/icon.png
+11:00:36.368 [main] [INFO] net.peachmonkey.RoutineInitializer start (RoutineInitializer.java:43) - Initialized Routine Monitor
+11:00:36.369 [main] [INFO] net.peachmonkey.view.RoutineHelperTrayIcon init (RoutineHelperTrayIcon.java:42) - Initializing TrayIcon
+11:00:36.596 [main] [INFO] net.peachmonkey.view.RoutineHelperTrayIcon init (RoutineHelperTrayIcon.java:49) - Initialized TrayIcon
+11:00:36.850 [main] [INFO] net.peachmonkey.Application logStarted (StartupInfoLogger.java:57) - Started Application in 7.518 seconds (JVM running for 8.321)

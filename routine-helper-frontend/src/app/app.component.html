@@ -1,0 +1,18 @@
+<div [class.dark-theme]="isDarkTheme">
+  <md-toolbar color="primary">
+    <button md-icon-button (click)="sidenav.toggle()">
+      <!-- Eventually this will redirect to the home screen, not open the side nav -->
+      <md-icon>home</md-icon>
+    </button>
+    <span>Routine Helper</span>
+    <button md-icon-button (click)="sidenav.toggle()">
+      <md-icon>more_vert</md-icon>
+    </button>
+  </md-toolbar>
+  <md-sidenav-layout>
+    <md-sidenav align="start" mode="side" #sidenav>
+      <button md-button (click)="addRoutineUser()">Users</button>
+    </md-sidenav>
+    <routine-user [routineUsers]="routineUsers"></routine-user>
+  </md-sidenav-layout>
+</div>
