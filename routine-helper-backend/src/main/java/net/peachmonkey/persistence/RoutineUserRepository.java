@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import net.peachmonkey.persistence.model.RoutineUser;
 
-public interface RoutineUserRepository extends JpaRepository<RoutineUser, String> {
+public interface RoutineUserRepository extends JpaRepository<RoutineUser, Long> {
 
 }

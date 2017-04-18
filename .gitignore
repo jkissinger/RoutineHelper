@@ -50,7 +50,8 @@ Temporary Items
 .project
 *.prefs
 target
-/Logs/
+/*/Logs/
 /copy.bat
 /.apt_generated/
 /bin/
+Logs

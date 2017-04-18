@@ -7,7 +7,7 @@ import { RoutineUser } from './routine-user';
 @Injectable()
 export class RoutineUserService {
     private headers = new Headers({ 'Content-Type': 'application/json' });
-    private routineUsersUrl = 'http://localhost:8079/routineUsers';  // URL to web api
+    private routineUsersUrl = 'http://localhost:8079/routineUsers';
 
     constructor(private http: Http) { }
 
@@ -26,8 +26,8 @@ export class RoutineUserService {
             .catch(this.handleError);
     }
 
-    delete(name: string): Promise<void> {
-        const url = `${this.routineUsersUrl}/${name}`;
+    delete(user: RoutineUser): Promise<void> {
+        const url = `${user._links.self.href}`;
         return this.http.delete(url, { headers: this.headers })
             .toPromise()
             .then(() => null)

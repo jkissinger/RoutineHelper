@@ -2,12 +2,12 @@ import { Injectable, Component, ViewContainerRef } from '@angular/core';
 import { MdDialog, MdDialogConfig, MdDialogRef } from "@angular/material";
 
 import { RoutineUserService } from './routine-user.service';
-import { AppComponent } from './app.component';
+import { RoutineUserComponent } from './routine-user.component';
 
 @Injectable()
 export class CreateRoutineUserDialog {
 
-  constructor(public dialog: MdDialog, public vcr: ViewContainerRef, public appComponent: AppComponent) { }
+  constructor(public dialog: MdDialog, public vcr: ViewContainerRef, public routineUserComponent: RoutineUserComponent) { }
 
   openDialog() {
     const config = new MdDialogConfig();
@@ -15,7 +15,7 @@ export class CreateRoutineUserDialog {
     let dialogRef = this.dialog.open(CreateRoutineUserComponent, config);
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`)
-      this.appComponent.getRoutineUsers();
+      this.routineUserComponent.getRoutineUsers();
     });
   }
 }
@@ -27,7 +27,7 @@ export class CreateRoutineUserDialog {
       <md-input-container>
         <input md-input placeholder="User Name" value="King Arthur"  #name>
       </md-input-container>
-      <button md-button (click)="createRoutineUser(name.value)">Add User</button>
+      <button md-button type="submit" (click)="createRoutineUser(name.value)">Add User</button>
     </div>
   `
 })

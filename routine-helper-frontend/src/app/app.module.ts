@@ -27,6 +27,10 @@ import { CreateRoutineUserComponent } from './create-routine-user.component';
       {
         path: 'app-root',
         component: AppComponent
+      },
+      {
+        path: 'routine-users',
+        component: RoutineUserComponent
       }
     ]),
     HttpModule,
