@@ -7,8 +7,7 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 
 import { RoutineUserService } from './routine-user.service';
-import { RoutineUserComponent } from './routine-user.component';
-import { CreateRoutineUserComponent } from './create-routine-user.component';
+import { RoutineUserComponent, CreateRoutineUserComponent } from './routine-user.component';
 
 @NgModule({
   declarations: [
