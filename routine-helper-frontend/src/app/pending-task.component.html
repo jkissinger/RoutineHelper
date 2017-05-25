@@ -1,0 +1,20 @@
+<md-grid-list cols="4">
+  <md-list-item *ngFor="let pendingTask of pendingTasks">
+    <md-card>
+      <md-card-title>{{pendingTask.task.name}}</md-card-title>
+      <md-card-header>
+        <div md-card-avatar class="example-header-image"></div>
+        <md-card-title>{{pendingTask.user.name}}</md-card-title>
+      </md-card-header>
+      <md-card-content>
+        <p>
+          {{pendingTask.user.name}} needs to complete {{pendingTask.task.name}} by {{pendingTask.task.notifyTime}}.
+        </p>
+      </md-card-content>
+      <md-card-actions>
+        <button md-button (click)="completePendingTask(pendingTask)">Complete</button>
+        <button md-button (click)="cancelPendingTask(pendingTask)">Cancel</button>
+      </md-card-actions>
+    </md-card>
+  </md-list-item>
+</md-grid-list>

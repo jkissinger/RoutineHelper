@@ -1,6 +1,6 @@
 <div [class.dark-theme]="isDarkTheme">
   <md-toolbar color="primary">
-    <button md-icon-button routerLink="/routine-users">
+    <button md-icon-button routerLink="/pending-tasks">
       <md-icon>home</md-icon>
     </button>
     <span>Routine Helper</span>
@@ -11,6 +11,8 @@
   <md-sidenav-layout>
     <md-sidenav align="start" mode="side" #sidenav>
       <button md-button routerLink="/routine-users">Users</button>
+      <button md-button routerLink="/routine-tasks">Tasks</button>
+      <button md-button routerLink="/routines">Routines</button>
     </md-sidenav>
     <router-outlet></router-outlet>
   </md-sidenav-layout>

@@ -6,4 +6,5 @@ import net.peachmonkey.persistence.model.RoutineTask;
 
 public interface RoutineTaskRepository extends JpaRepository<RoutineTask, Long> {
 
+	public RoutineTask findOneByName(String name);
 }

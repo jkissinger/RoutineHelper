@@ -26,6 +26,10 @@ public class Routine {
 	@ManyToMany
 	private List<RoutineHoliday> holidays = new ArrayList<>();
 
+	public Long getId() {
+		return id;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -74,6 +78,6 @@ public class Routine {
 
 	@Override
 	public String toString() {
-		return "Routine [name=" + name + ", tasks=" + tasks + ", days=" + days + ", holidays=" + holidays + "]";
+		return "Routine [id=" + id + ", name=" + name + ", tasks=" + tasks + ", days=" + days + ", holidays=" + holidays + "]";
 	}
 }

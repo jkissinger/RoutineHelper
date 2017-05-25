@@ -1,5 +1,4 @@
-import { Entity } from './entity';
+import { NamedEntity } from './named.entity';
 
-export class RoutineUser extends Entity {
-  name: string;
+export class RoutineUser extends NamedEntity {
 }

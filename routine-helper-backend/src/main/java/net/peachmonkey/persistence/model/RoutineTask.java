@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class RoutineTask {
@@ -20,13 +19,15 @@ public class RoutineTask {
 	private Long id;
 	@Column(unique = true)
 	private String name;
-	@ManyToOne
-	private Routine routine;
 	private LocalTime notifyTime;
 	private LocalTime warningTime;
 	private LocalTime alarmTime;
 	@ManyToMany
 	private List<RoutineUser> users = new ArrayList<>();
+
+	public Long getId() {
+		return id;
+	}
 
 	public String getName() {
 		return name;
@@ -34,14 +35,6 @@ public class RoutineTask {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Routine getRoutine() {
-		return routine;
-	}
-
-	public void setRoutine(Routine routine) {
-		this.routine = routine;
 	}
 
 	public LocalTime getNotifyTime() {
@@ -82,20 +75,18 @@ public class RoutineTask {
 			return false;
 		}
 		RoutineTask castOther = (RoutineTask) other;
-		return Objects.equals(name, castOther.name) && Objects.equals(routine, castOther.routine) && Objects.equals(notifyTime, castOther.notifyTime)
-				&& Objects.equals(warningTime, castOther.warningTime) && Objects.equals(alarmTime, castOther.alarmTime)
-				&& Objects.equals(users, castOther.users);
+		return Objects.equals(name, castOther.name);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(name, routine, notifyTime, warningTime, alarmTime, users);
+		return Objects.hash(name);
 	}
 
 	@Override
 	public String toString() {
-		return "RoutineTask [name=" + name + ", routine=" + routine + ", notifyTime=" + notifyTime + ", warningTime=" + warningTime + ", alarmTime="
-				+ alarmTime + ", users=" + users + "]";
+		return "RoutineTask [id=" + id + ", name=" + name + ", notifyTime=" + notifyTime + ", warningTime=" + warningTime + ", alarmTime=" + alarmTime
+				+ ", users=" + users + "]";
 	}
 
 }

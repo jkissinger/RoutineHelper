@@ -20,6 +20,10 @@ public class RoutineDay {
 	@Enumerated(EnumType.STRING)
 	private DayOfWeek day;
 
+	public Long getId() {
+		return id;
+	}
+
 	public DayOfWeek getDay() {
 		return day;
 	}
@@ -44,6 +48,6 @@ public class RoutineDay {
 
 	@Override
 	public String toString() {
-		return "RoutineDay [day=" + day + "]";
+		return "RoutineDay [id=" + id + ", day=" + day + "]";
 	}
 }

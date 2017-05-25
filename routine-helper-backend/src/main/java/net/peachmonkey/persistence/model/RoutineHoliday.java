@@ -18,6 +18,10 @@ public class RoutineHoliday {
 	private String name;
 	private LocalDate date;
 
+	public Long getId() {
+		return id;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -35,11 +39,6 @@ public class RoutineHoliday {
 	}
 
 	@Override
-	public String toString() {
-		return "RoutineHoliday [name=" + name + ", date=" + date + "]";
-	}
-
-	@Override
 	public boolean equals(final Object other) {
 		if (!(other instanceof RoutineHoliday)) {
 			return false;
@@ -51,5 +50,10 @@ public class RoutineHoliday {
 	@Override
 	public int hashCode() {
 		return Objects.hash(name);
+	}
+
+	@Override
+	public String toString() {
+		return "RoutineHoliday [id=" + id + ", name=" + name + ", date=" + date + "]";
 	}
 }

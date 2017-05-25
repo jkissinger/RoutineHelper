@@ -18,9 +18,14 @@ public class CompletedTask {
 	private RoutineUser user;
 	@ManyToOne
 	private RoutineTask task;
+	private Cause cause;
 	private LocalDateTime completionTime;
 
-	public long getId() {
+	public enum Cause {
+		COMPLETED, CANCELLED, EXPIRED, REASSIGNED;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
@@ -40,6 +45,14 @@ public class CompletedTask {
 		this.task = task;
 	}
 
+	public Cause getCause() {
+		return cause;
+	}
+
+	public void setCause(Cause cause) {
+		this.cause = cause;
+	}
+
 	public LocalDateTime getCompletionTime() {
 		return completionTime;
 	}
@@ -50,7 +63,7 @@ public class CompletedTask {
 
 	@Override
 	public String toString() {
-		return "CompletedTask [id=" + id + ", user=" + user + ", task=" + task + ", completionTime=" + completionTime + "]";
+		return "CompletedTask [id=" + id + ", user=" + user + ", task=" + task + ", cause=" + cause + ", completionTime=" + completionTime + "]";
 	}
 
 }
