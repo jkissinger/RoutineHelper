@@ -2,6 +2,8 @@ package net.peachmonkey.controller;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +19,7 @@ import net.peachmonkey.persistence.model.RoutineUser;
 @RestController
 public class RoutineTaskController {
 
+	private static final Logger LOGGER = LogManager.getLogger();
 	@Autowired
 	private RoutineTaskRepository repo;
 	@Autowired
@@ -35,11 +38,17 @@ public class RoutineTaskController {
 	@RequestMapping(value = "/addUserToTask", method = RequestMethod.POST)
 	public RoutineTask addUserToTask(Long taskId, Long userId) {
 		RoutineTask task = repo.findOne(taskId);
-		RoutineUser user = userRepo.findOne(userId);
-		if (!task.getUsers().contains(user)) {
-			task.getUsers().add(user);
-			return repo.save(task);
+		if (task == null) {
+			LOGGER.warn("Attempted to add RoutineUser[id={}] to non-existent RoutineTask[id={}].", userId, taskId);
+			return null;
 		} else {
+			RoutineUser user = userRepo.findOne(userId);
+			if (user == null) {
+				LOGGER.warn("Attempted to add non-existent RoutineUser[id={}] to RoutineTask[id={}].", userId, taskId);
+			} else if (!task.getUsers().contains(user)) {
+				task.getUsers().add(user);
+				return repo.save(task);
+			}
 			return task;
 		}
 	}
@@ -47,11 +56,17 @@ public class RoutineTaskController {
 	@RequestMapping(value = "/removeUserFromTask", method = RequestMethod.POST)
 	public RoutineTask removeUserFromTask(Long taskId, Long userId) {
 		RoutineTask task = repo.findOne(taskId);
-		RoutineUser user = userRepo.findOne(userId);
-		if (task.getUsers().contains(user)) {
-			task.getUsers().remove(user);
-			return repo.save(task);
+		if (task == null) {
+			LOGGER.warn("Attempted to remove RoutineUser[id={}] from non-existent RoutineTask[id={}].", userId, taskId);
+			return null;
 		} else {
+			RoutineUser user = userRepo.findOne(userId);
+			if (user == null) {
+				LOGGER.warn("Attempted to remove non-existent RoutineUser[id={}] from RoutineTask[id={}].", userId, taskId);
+			} else if (task.getUsers().contains(user)) {
+				task.getUsers().remove(user);
+				return repo.save(task);
+			}
 			return task;
 		}
 	}
@@ -66,23 +81,19 @@ public class RoutineTaskController {
 			persisted = repo.findOneByName(routineTask.getName());
 		}
 		if (persisted == null) {
+			LOGGER.info("Created new {}.", routineTask);
 			return repo.save(routineTask);
 		} else {
 			if (StringUtils.hasText(routineTask.getName())) {
 				persisted.setName(routineTask.getName());
 			}
-			if (routineTask.getNotifyTime() != null) {
-				persisted.setNotifyTime(routineTask.getNotifyTime());
-			}
-			if (routineTask.getWarningTime() != null) {
-				persisted.setWarningTime(routineTask.getWarningTime());
-			}
-			if (routineTask.getAlarmTime() != null) {
-				persisted.setAlarmTime(routineTask.getAlarmTime());
+			if (routineTask.getDueTime() != null) {
+				persisted.setDueTime(routineTask.getDueTime());
 			}
 			if (routineTask.getUsers() != null) {
 				persisted.setUsers(routineTask.getUsers());
 			}
+			LOGGER.info("Updated {}.", persisted);
 			return repo.save(persisted);
 		}
 	}

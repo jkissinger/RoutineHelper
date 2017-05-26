@@ -19,9 +19,7 @@ public class RoutineTask {
 	private Long id;
 	@Column(unique = true)
 	private String name;
-	private LocalTime notifyTime;
-	private LocalTime warningTime;
-	private LocalTime alarmTime;
+	private LocalTime dueTime;
 	@ManyToMany
 	private List<RoutineUser> users = new ArrayList<>();
 
@@ -37,28 +35,12 @@ public class RoutineTask {
 		this.name = name;
 	}
 
-	public LocalTime getNotifyTime() {
-		return notifyTime;
+	public LocalTime getDueTime() {
+		return dueTime;
 	}
 
-	public void setNotifyTime(LocalTime notifyTime) {
-		this.notifyTime = notifyTime;
-	}
-
-	public LocalTime getWarningTime() {
-		return warningTime;
-	}
-
-	public void setWarningTime(LocalTime warningTime) {
-		this.warningTime = warningTime;
-	}
-
-	public LocalTime getAlarmTime() {
-		return alarmTime;
-	}
-
-	public void setAlarmTime(LocalTime alarmTime) {
-		this.alarmTime = alarmTime;
+	public void setDueTime(LocalTime dueTime) {
+		this.dueTime = dueTime;
 	}
 
 	public List<RoutineUser> getUsers() {
@@ -85,8 +67,7 @@ public class RoutineTask {
 
 	@Override
 	public String toString() {
-		return "RoutineTask [id=" + id + ", name=" + name + ", notifyTime=" + notifyTime + ", warningTime=" + warningTime + ", alarmTime=" + alarmTime
-				+ ", users=" + users + "]";
+		return "RoutineTask [id=" + id + ", name=" + name + ", dueTime=" + dueTime + ", users=" + users + "]";
 	}
 
 }

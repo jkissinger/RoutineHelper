@@ -5,6 +5,7 @@ import { Routine } from './routine';
 import { RoutineService } from './routine.service';
 import { RoutineTask } from './routine-task';
 import { RoutineTaskService } from './routine-task.service';
+import { RoutineDay } from './routine-day';
 
 @Component({
   selector: 'routine',
@@ -15,13 +16,19 @@ export class RoutineComponent implements OnInit {
 
   constructor(public dialog: MdDialog, public vcr: ViewContainerRef, private routineService: RoutineService, private routineTaskService: RoutineTaskService) { }
 
+  ngOnInit(): void {
+    this.loadRoutines();
+  }
+
+  loadRoutines(): void {
+    this.routineService.getRoutines().then(routines => this.routines = routines);
+  }
+
   createRoutine(): void {
     const config = new MdDialogConfig();
     config.viewContainerRef = this.vcr;
     let dialogRef = this.dialog.open(CreateRoutineComponent, config);
-    dialogRef.afterClosed().subscribe(result => {
-      this.loadRoutines();
-    });
+    dialogRef.afterClosed().subscribe(result => this.loadRoutines());
   }
 
   addRoutineTask(routine: Routine): void {
@@ -29,36 +36,26 @@ export class RoutineComponent implements OnInit {
     config.viewContainerRef = this.vcr;
     let dialogRef = this.dialog.open(AddRoutineTaskToRoutineComponent, config);
     dialogRef.componentInstance.routine = routine;
-    this.routineTaskService.getTasksNotForRoutine(routine.name).then(result => dialogRef.componentInstance.routineTasks = result);
-    dialogRef.afterClosed().subscribe(result => {
+    this.routineTaskService.getTasksNotForRoutine(routine.id).then(result => dialogRef.componentInstance.routineTasks = result);
+    dialogRef.afterClosed().subscribe(result => this.loadRoutines());
+  }
+
+  removeRoutineDay(routine: Routine, day: RoutineDay): void {
+    this.routineService.removeDay(routine, day).then(result => {
       this.loadRoutines();
     });
   }
 
-  removeRoutineTask(routine: Routine): void {
-    const config = new MdDialogConfig();
-    config.viewContainerRef = this.vcr;
-    let dialogRef = this.dialog.open(RemoveRoutineTaskFromRoutineComponent, config);
-    dialogRef.componentInstance.routine = routine;
-    dialogRef.afterClosed().subscribe(result => {
+  removeRoutineTask(routine: Routine, task: RoutineTask): void {
+    this.routineService.removeTask(routine, task).then(result => {
       this.loadRoutines();
     });
   }
 
   deleteRoutine(routine: Routine): void {
     if (confirm(`Are you sure you want to delete routine '${routine.name}'?`)) {
-      this.routineService.delete(routine).then(result => {
-        this.loadRoutines();
-      });
+      this.routineService.delete(routine.id).then(result => this.loadRoutines());
     }
-  }
-
-  loadRoutines(): void {
-    this.routineService.getRoutines().then(routines => this.routines = routines);
-  }
-
-  ngOnInit(): void {
-    this.loadRoutines();
   }
 }
 
@@ -69,7 +66,7 @@ export class RoutineComponent implements OnInit {
     <md-input-container>
       <input md-input placeholder="Routine Name" value="" #name>
     </md-input-container>
-    <button md-button type="submit" (click)="createRoutine(name.value, [chosenHour, chosenMinute])">Add Routine</button>
+    <button md-button type="submit" (click)="createRoutine(name.value)">Add Routine</button>
   </div>
 `
 })
@@ -78,7 +75,9 @@ export class CreateRoutineComponent {
   constructor(private routineService: RoutineService, private dialogRef: MdDialogRef<CreateRoutineComponent>) { }
 
   createRoutine(name: string) {
-    this.routineService.create(name).then(result => this.dialogRef.close(`${result}`));
+    let routine = new Routine();
+    routine.name = name;
+    this.routineService.createOrUpdate(routine).then(result => this.dialogRef.close(`${result}`));
   }
 }
 
@@ -102,26 +101,5 @@ export class AddRoutineTaskToRoutineComponent {
 
   addRoutineTask(routineTask: RoutineTask) {
     this.routineService.addTask(this.routine, routineTask).then(result => this.dialogRef.close(`${result}`));
-  }
-}
-
-@Component({
-  selector: 'remove-routine-task-from-routine',
-  template: `
-  <div>
-    <md-input-container>
-      <input md-input placeholder="Routine Name" value="" #name>
-    </md-input-container>
-    <button md-button type="submit" (click)="createRoutine(name.value, [chosenHour, chosenMinute])">Add Routine</button>
-  </div>
-`
-})
-export class RemoveRoutineTaskFromRoutineComponent {
-  routine: Routine;
-
-  constructor(private routineService: RoutineService, private dialogRef: MdDialogRef<AddRoutineTaskToRoutineComponent>) { }
-
-  removeRoutineTask(routineTask: RoutineTask) {
-    this.routineService.removeTask(this.routine, routineTask).then(result => this.dialogRef.close(`${result}`));
   }
 }

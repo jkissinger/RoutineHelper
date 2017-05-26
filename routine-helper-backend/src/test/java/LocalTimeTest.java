@@ -25,11 +25,11 @@ public class LocalTimeTest {
 		LocalTime time = LocalTime.NOON;
 		RoutineTask task = new RoutineTask();
 		task.setName("TestName");
-		task.setNotifyTime(time);
+		task.setDueTime(time);
 		System.out.println(mapper.writeValueAsString(task));
 
 		try {
-			mapper.readerFor(RoutineTask.class).readValue("{\"name\":\"asdfdasf\",\"notifyTime\":[2,3]}");
+			mapper.readerFor(RoutineTask.class).readValue("{\"name\":\"asdfdasf\",\"dueTime\":[2,3]}");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

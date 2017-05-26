@@ -1,16 +1,17 @@
 <md-card class="primary-card">
   <md-card-title>Routine Tasks</md-card-title>
   <md-card-content>
-    <md-list class="routineTask">
+    <md-list>
       <md-list-item *ngFor="let routineTask of routineTasks">
-        {{routineTask.name}}
-        <button md-button (click)="deleteRoutineTask(routineTask)">
-    <md-icon>delete_forever</md-icon>
-  </button>
+        <md-icon md-list-icon>assignment</md-icon>
+        <h4 md-line>{{routineTask.name}}</h4>
+        <p md-line>
+          <span *ngFor="let user of routineTask.users; let isLast=last">{{user.name}}{{isLast ? '' : ', '}}</span>
+        </p>
+        <p md-line>{{parseTime(routineTask.dueTime)}}</p>
+        <button md-button (click)="deleteRoutineTask(routineTask)"><md-icon>delete_forever</md-icon>Delete</button>
       </md-list-item>
     </md-list>
+    <button md-mini-fab (click)="addRoutineTask()"><md-icon>add</md-icon></button>
   </md-card-content>
-  <button md-mini-fab (click)="addRoutineTask()">
-    <md-icon>add</md-icon>
-  </button>
 </md-card>

@@ -53,33 +53,47 @@ public class TaskUtils {
 		for (RoutineTask task : routine.getTasks()) {
 			for (RoutineUser user : task.getUsers()) {
 				PendingTask pendingTask = new PendingTask();
-				pendingTask.setTask(task);
+				pendingTask.setName(task.getName());
+				pendingTask.setDueTime(task.getDueTime());
 				pendingTask.setUser(user);
 				pendingRepo.save(pendingTask);
+				LOGGER.info("Generated PendingTask for Routine=[{}], Task=[{}], User=[{}] due @ [{}].", routine.getName(), task.getName(), user.getName(), task.getDueTime());
 			}
 		}
 	}
 
 	public CompletedTask completePendingTask(Long id, Cause cause) {
 		PendingTask pendingTask = pendingRepo.findOne(id);
-		CompletedTask completed = new CompletedTask();
-		completed.setCause(cause);
-		completed.setCompletionTime(LocalDateTime.now());
-		completed.setTask(pendingTask.getTask());
-		completed.setUser(pendingTask.getUser());
-		pendingRepo.delete(pendingTask);
-		LOGGER.debug("Deleted {}.", pendingTask);
-		return completedRepo.save(completed);
+		if (pendingTask == null) {
+			LOGGER.warn("Attempted to complete non-existent PendingTask[id={}].", id);
+			return null;
+		} else {
+			CompletedTask completed = new CompletedTask();
+			completed.setCause(cause);
+			completed.setCompletionTime(LocalDateTime.now());
+			completed.setName(pendingTask.getName());
+			completed.setDueTime(pendingTask.getDueTime());
+			completed.setUser(pendingTask.getUser());
+			pendingRepo.delete(pendingTask);
+			LOGGER.debug("Completed {}.", pendingTask);
+			return completedRepo.save(completed);
+		}
 	}
 
 	public PendingTask reassignCompletedTask(Long id) {
 		CompletedTask completed = completedRepo.findOne(id);
-		completed.setCause(Cause.REASSIGNED);
-		PendingTask pending = new PendingTask();
-		pending.setTask(completed.getTask());
-		pending.setUser(completed.getUser());
-		completedRepo.save(completed);
-		LOGGER.debug("Reassigned {}.", completed);
-		return pendingRepo.save(pending);
+		if (completed == null) {
+			LOGGER.warn("Attempted to reassign non-existent CompletedTask[id={}].", id);
+			return null;
+		} else {
+			completed.setCause(Cause.REASSIGNED);
+			PendingTask pending = new PendingTask();
+			pending.setName(completed.getName());
+			pending.setDueTime(completed.getDueTime());
+			pending.setUser(completed.getUser());
+			completedRepo.save(completed);
+			LOGGER.debug("Reassigned {}.", completed);
+			return pendingRepo.save(pending);
+		}
 	}
 }

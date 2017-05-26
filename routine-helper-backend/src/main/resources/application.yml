@@ -1,6 +1,9 @@
 server:
   port: 8079
 spring:
+  profiles:
+    active:
+    - production
   application:
     name: RoutineHelper
   jackson:

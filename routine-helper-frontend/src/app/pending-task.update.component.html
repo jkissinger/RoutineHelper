@@ -1,8 +1,5 @@
 <div>
-  <md-input-container>
-    <input md-input placeholder="Task Name" value="" #name>
-  </md-input-container>
-  <br />
+  <h2>{{ task.name }}</h2>
   <label for="due-time">Due Time:</label>
   <md-select placeholder="Hour" id="due-time" [(ngModel)]="chosenHour">
     <md-option *ngFor="let hour of global().hourValues()" [value]="hour">{{ hour }}</md-option>
@@ -14,9 +11,5 @@
     <md-option *ngFor="let period of global().periodValues()" [value]="period">{{ period }}</md-option>
   </md-select>
   <br />
-  <md-select placeholder="User" [(ngModel)]="chosenUser">
-    <md-option *ngFor="let user of users" [value]="user">{{ user.name }}</md-option>
-  </md-select>
-  <br />
-  <button md-button type="submit" (click)="createRoutineTask(name.value, [chosenHour, chosenMinute, chosenPeriod])">Add Task</button>
+  <button md-button type="submit" (click)="updatePendingTask([chosenHour, chosenMinute, chosenPeriod])">Update Task</button>
 </div>

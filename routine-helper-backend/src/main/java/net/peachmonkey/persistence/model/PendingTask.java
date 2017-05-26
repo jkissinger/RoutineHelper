@@ -1,5 +1,7 @@
 package net.peachmonkey.persistence.model;
 
+import java.time.LocalTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,17 +13,25 @@ public class PendingTask {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@ManyToOne
-	private RoutineTask task;
+	private String name;
+	private LocalTime dueTime;
 	@ManyToOne
 	private RoutineUser user;
 
-	public RoutineTask getTask() {
-		return task;
+	public String getName() {
+		return name;
 	}
 
-	public void setTask(RoutineTask task) {
-		this.task = task;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public LocalTime getDueTime() {
+		return dueTime;
+	}
+
+	public void setDueTime(LocalTime dueTime) {
+		this.dueTime = dueTime;
 	}
 
 	public RoutineUser getUser() {
@@ -38,7 +48,7 @@ public class PendingTask {
 
 	@Override
 	public String toString() {
-		return "PendingTask [id=" + id + ", task=" + task + ", user=" + user + "]";
+		return "PendingTask [id=" + id + ", name=" + name + ", dueTime=" + dueTime + ", user=" + user + "]";
 	}
 
 }

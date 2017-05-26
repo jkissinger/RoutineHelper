@@ -16,16 +16,12 @@ export class RoutineUserComponent implements OnInit {
     const config = new MdDialogConfig();
     config.viewContainerRef = this.vcr;
     let dialogRef = this.dialog.open(CreateRoutineUserComponent, config);
-    dialogRef.afterClosed().subscribe(result => {
-      this.loadRoutineUsers();
-    });
+    dialogRef.afterClosed().subscribe(result => this.loadRoutineUsers());
   }
 
   deleteRoutineUser(user: RoutineUser): void {
     if (confirm(`Are you sure you want to delete user '${user.name}'?`)) {
-      this.routineUserService.delete(user).then(result => {
-        this.loadRoutineUsers();
-      });
+      this.routineUserService.delete(user).then(result => this.loadRoutineUsers());
     }
   }
 
@@ -54,6 +50,8 @@ export class CreateRoutineUserComponent {
   constructor(private routineUserService: RoutineUserService, private dialogRef: MdDialogRef<CreateRoutineUserComponent>) { }
 
   createRoutineUser(name: string) {
-    this.routineUserService.create(name).then(result => this.dialogRef.close(`${result}`));
+    let user = new RoutineUser();
+    user.name = name;
+    this.routineUserService.createOrUpdate(user).then(result => this.dialogRef.close(`${result}`));
   }
 }

@@ -2,6 +2,8 @@ package net.peachmonkey.controller;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +17,7 @@ import net.peachmonkey.persistence.model.RoutineUser;
 @RestController
 public class RoutineUserController {
 
+	private static final Logger LOGGER = LogManager.getLogger();
 	@Autowired
 	private RoutineUserRepository repo;
 
@@ -38,10 +41,12 @@ public class RoutineUserController {
 			persisted = repo.findOneByName(routineUser.getName());
 		}
 		if (persisted == null) {
+			LOGGER.info("Created new {}.", routineUser);
 			return repo.save(routineUser);
 		} else {
 			if (StringUtils.hasText(routineUser.getName())) {
 				persisted.setName(routineUser.getName());
+				LOGGER.info("Updated {}.", routineUser);
 				return repo.save(persisted);
 			}
 			return persisted;

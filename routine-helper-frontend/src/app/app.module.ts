@@ -11,9 +11,10 @@ import { RoutineTaskService } from './routine-task.service';
 import { RoutineService } from './routine.service';
 import { RoutineUserComponent, CreateRoutineUserComponent } from './routine-user.component';
 import { RoutineTaskComponent, CreateRoutineTaskComponent } from './routine-task.component';
-import { RoutineComponent, CreateRoutineComponent, AddRoutineTaskToRoutineComponent, RemoveRoutineTaskFromRoutineComponent } from './routine.component';
-import { PendingTaskComponent } from './pending-task.component';
+import { RoutineComponent, CreateRoutineComponent, AddRoutineTaskToRoutineComponent } from './routine.component';
+import { PendingTaskComponent, UpdatePendingTaskComponent } from './pending-task.component';
 import { PendingTaskService } from './pending-task.service';
+import { CompletedTaskService } from './completed-task.service';
 
 @NgModule({
   declarations: [
@@ -25,23 +26,23 @@ import { PendingTaskService } from './pending-task.service';
     RoutineComponent,
     CreateRoutineComponent,
     AddRoutineTaskToRoutineComponent,
-    RemoveRoutineTaskFromRoutineComponent,
-    PendingTaskComponent
+    PendingTaskComponent,
+    UpdatePendingTaskComponent
   ],
   entryComponents: [
     CreateRoutineUserComponent,
     CreateRoutineTaskComponent,
     CreateRoutineComponent,
     AddRoutineTaskToRoutineComponent,
-    RemoveRoutineTaskFromRoutineComponent
+    UpdatePendingTaskComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
       {
-        path: 'app-root',
-        component: AppComponent
+        path: '',
+        component: PendingTaskComponent
       },
       {
         path: 'routine-users',
@@ -54,10 +55,6 @@ import { PendingTaskService } from './pending-task.service';
       {
         path: 'routines',
         component: RoutineComponent
-      },
-      {
-        path: 'pending-tasks',
-        component: PendingTaskComponent
       }
     ]),
     HttpModule,
@@ -67,7 +64,8 @@ import { PendingTaskService } from './pending-task.service';
     RoutineUserService,
     RoutineTaskService,
     RoutineService,
-    PendingTaskService
+    PendingTaskService,
+    CompletedTaskService
   ],
   bootstrap: [AppComponent]
 })

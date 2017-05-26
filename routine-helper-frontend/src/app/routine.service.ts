@@ -4,6 +4,7 @@ import 'rxjs/add/operator/toPromise';
 import { AppSettings } from './app.settings';
 
 import { RoutineTask } from './routine-task';
+import { RoutineDay } from './routine-day';
 import { Routine } from './routine';
 
 @Injectable()
@@ -44,6 +45,14 @@ export class RoutineService {
     addTask(routine: Routine, task: RoutineTask): Promise<Routine> {
         return this.http
             .post(AppSettings.API_ENDPOINT + 'addTaskToRoutine?routineId=' + routine.id + '&taskId=' + task.id, JSON.stringify(routine), { headers: AppSettings.CONTENT_TYPE_HEADERS })
+            .toPromise()
+            .then(res => res.json())
+            .catch(AppSettings.handleError);
+    }
+
+    removeDay(routine: Routine, day: RoutineDay): Promise<Routine> {
+        return this.http
+            .post(AppSettings.API_ENDPOINT + 'removeDayFromRoutine?routineId=' + routine.id + '&dayId=' + day.id, JSON.stringify(routine), { headers: AppSettings.CONTENT_TYPE_HEADERS })
             .toPromise()
             .then(res => res.json())
             .catch(AppSettings.handleError);

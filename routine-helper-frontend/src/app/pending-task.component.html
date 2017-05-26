@@ -1,20 +1,36 @@
-<md-grid-list cols="4">
-  <md-list-item *ngFor="let pendingTask of pendingTasks">
-    <md-card>
-      <md-card-title>{{pendingTask.task.name}}</md-card-title>
-      <md-card-header>
-        <div md-card-avatar class="example-header-image"></div>
-        <md-card-title>{{pendingTask.user.name}}</md-card-title>
-      </md-card-header>
+<md-tab-group>
+  <md-tab label="Pending Tasks">
+    <md-card class="primary-card">
+      <md-card-title>Pending Tasks</md-card-title>
       <md-card-content>
-        <p>
-          {{pendingTask.user.name}} needs to complete {{pendingTask.task.name}} by {{pendingTask.task.notifyTime}}.
-        </p>
+        <md-list>
+          <md-list-item *ngFor="let pendingTask of pendingTasks">
+            <md-icon md-list-icon>{{getPendingTaskIcon(pendingTask)}}</md-icon>
+            <h4 md-line>{{pendingTask.name}}</h4>
+            <p md-line>{{pendingTask.user.name}}</p>
+            <p md-line>{{parseTime(pendingTask.dueTime)}}</p>
+            <button md-button (click)="completePendingTask(pendingTask)"><md-icon>done</md-icon> Complete</button>
+            <button md-button (click)="updatePendingTask(pendingTask)"><md-icon>update</md-icon> Update</button>
+            <button md-button (click)="cancelPendingTask(pendingTask)"><md-icon>cancel</md-icon> Cancel</button>
+          </md-list-item>
+        </md-list>
       </md-card-content>
-      <md-card-actions>
-        <button md-button (click)="completePendingTask(pendingTask)">Complete</button>
-        <button md-button (click)="cancelPendingTask(pendingTask)">Cancel</button>
-      </md-card-actions>
     </md-card>
-  </md-list-item>
-</md-grid-list>
+  </md-tab>
+  <md-tab label="Completed Tasks">
+    <md-card class="primary-card">
+      <md-card-title>Completed Tasks</md-card-title>
+      <md-card-content>
+        <md-list>
+          <md-list-item *ngFor="let completedTask of completedTasks">
+            <md-icon md-list-icon>assignment</md-icon>
+            <h4 md-line>{{completedTask.name}}</h4>
+            <p md-line>{{completedTask.user.name}}</p>
+            <p md-line>{{completedTask.cause}} @ {{completedTask.completionTime | date:'short'}}</p>
+            <button md-button (click)="reassignCompletedTask(completedTask)"><md-icon>assignment_return</md-icon> Reassign Task</button>
+          </md-list-item>
+        </md-list>
+      </md-card-content>
+    </md-card>
+  </md-tab>
+</md-tab-group>

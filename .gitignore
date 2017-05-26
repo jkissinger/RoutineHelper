@@ -55,3 +55,7 @@ target
 /.apt_generated/
 /bin/
 Logs
+/routine-helper-backend/application.yml
+/routine-helper-backend/routine-helper-backend.jar
+/routine-helper-backend/start.bat
+/start.bat
