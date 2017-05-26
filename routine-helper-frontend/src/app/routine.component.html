@@ -1,12 +1,17 @@
 <md-card class="primary-card">
   <md-card-title>Routines</md-card-title>
   <md-card-content>
-    <md-list class="routine">
+    <md-list>
       <md-list-item *ngFor="let routine of routines">
-        {{routine.name}}
-        <button md-button (click)="addRoutineTask(routine)"><md-icon>add_to_queue</md-icon></button>
-        <button md-button (click)="removeRoutineTask(routine)"><md-icon>remove_from_queue</md-icon></button>
-        <button md-button (click)="deleteRoutine(routine)"><md-icon>delete_forever</md-icon></button>
+        <h2 md-line>{{routine.name}}</h2>
+        <p md-line>
+          <md-icon md-list-icon>date_range</md-icon><span *ngFor="let day of routine.days; let isLast=last">{{day.day}}<button md-button class="md-small" (click)="removeRoutineDay(routine, day)"><md-icon md-list-icon>delete_forever</md-icon></button>{{isLast ? '' : ', '}}</span>
+        </p>
+        <p md-line>
+          <md-icon md-list-icon>assignment</md-icon><span *ngFor="let task of routine.tasks; let isLast=last">{{task.name}}<button md-button class="md-small" (click)="removeRoutineTask(routine, task)"><md-icon md-list-icon>delete_forever</md-icon></button>{{isLast ? '' : ', '}}</span>
+        </p>
+        <button md-button (click)="addRoutineTask(routine)"><md-icon>add_to_queue</md-icon> Add Task</button>
+        <button md-button (click)="deleteRoutine(routine)"><md-icon>delete_forever</md-icon> Delete</button>
       </md-list-item>
     </md-list>
   </md-card-content>
