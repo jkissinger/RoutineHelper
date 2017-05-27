@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import net.peachmonkey.persistence.CompletedTaskRepository;
@@ -36,6 +37,14 @@ public class TaskUtils {
 	@Autowired
 	private CompletedTaskRepository completedRepo;
 
+	@Scheduled(cron = "0 0 23 * * *")
+	public void expirePendingTasks() {
+		for (PendingTask task : pendingRepo.findAll()) {
+			completePendingTask(task, Cause.EXPIRED);
+		}
+	}
+
+	@Scheduled(cron = "0 0 1 * * *")
 	@Transactional
 	public void generatePendingTasks() {
 		for (Routine routine : routineRepo.findAll()) {
@@ -68,16 +77,20 @@ public class TaskUtils {
 			LOGGER.warn("Attempted to complete non-existent PendingTask[id={}].", id);
 			return null;
 		} else {
-			CompletedTask completed = new CompletedTask();
-			completed.setCause(cause);
-			completed.setCompletionTime(LocalDateTime.now());
-			completed.setName(pendingTask.getName());
-			completed.setDueTime(pendingTask.getDueTime());
-			completed.setUser(pendingTask.getUser());
-			pendingRepo.delete(pendingTask);
-			LOGGER.debug("Completed {}.", pendingTask);
-			return completedRepo.save(completed);
+			return completePendingTask(pendingTask, cause);
 		}
+	}
+
+	public CompletedTask completePendingTask(PendingTask pendingTask, Cause cause) {
+		CompletedTask completed = new CompletedTask();
+		completed.setCause(cause);
+		completed.setCompletionTime(LocalDateTime.now());
+		completed.setName(pendingTask.getName());
+		completed.setDueTime(pendingTask.getDueTime());
+		completed.setUser(pendingTask.getUser());
+		pendingRepo.delete(pendingTask);
+		LOGGER.debug("Completed {}.", pendingTask);
+		return completedRepo.save(completed);
 	}
 
 	public PendingTask reassignCompletedTask(Long id) {

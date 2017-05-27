@@ -43,6 +43,11 @@ public class PendingTaskController {
 		taskUtils.generatePendingTasks();
 	}
 
+	@RequestMapping(value = "/expirePendingTasks", method = RequestMethod.POST)
+	public void expirePendingTasks() {
+		taskUtils.expirePendingTasks();
+	}
+
 	@RequestMapping(value = "/completePendingTask", method = RequestMethod.POST)
 	public CompletedTask completePendingTask(Long id, Cause cause) {
 		return taskUtils.completePendingTask(id, cause);

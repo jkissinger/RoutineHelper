@@ -26,8 +26,9 @@
 	</properties>
 
 	<modules>
+		<module>routine-helper-entities</module>
 		<module>routine-helper-backend</module>
-		<module>routine-helper-frontend</module>
+		<module>routine-helper-desktop</module>
 	</modules>
 
 	<dependencyManagement>
@@ -51,6 +52,11 @@
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
 				<version>${commons-io.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.peachmonkey</groupId>
+				<artifactId>routine-helper-entities</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

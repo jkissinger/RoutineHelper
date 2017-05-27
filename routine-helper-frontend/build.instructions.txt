@@ -1,0 +1,2 @@
+ng build --prod -aot
+copy routine-helper-frontend\dist to routine-helper-backend\src\main\resources\static

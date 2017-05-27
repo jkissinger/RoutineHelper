@@ -59,3 +59,4 @@ Logs
 /routine-helper-backend/routine-helper-backend.jar
 /routine-helper-backend/start.bat
 /start.bat
+/routine-helper-backend/src/main/resources/static

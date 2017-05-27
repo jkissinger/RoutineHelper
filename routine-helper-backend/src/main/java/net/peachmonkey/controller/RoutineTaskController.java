@@ -1,5 +1,6 @@
 package net.peachmonkey.controller;
 
+import java.util.Comparator;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -27,7 +28,9 @@ public class RoutineTaskController {
 
 	@RequestMapping(value = "/getRoutineTasks", method = RequestMethod.GET)
 	public List<RoutineTask> getRoutineTasks() {
-		return repo.findAll();
+		List<RoutineTask> tasks = repo.findAll();
+		tasks.sort(Comparator.comparing(RoutineTask::getDueTime));
+		return tasks;
 	}
 
 	@RequestMapping(value = "/getRoutineTask", method = RequestMethod.GET)

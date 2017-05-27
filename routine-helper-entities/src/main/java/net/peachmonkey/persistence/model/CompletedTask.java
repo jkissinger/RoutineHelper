@@ -72,8 +72,7 @@ public class CompletedTask {
 
 	@Override
 	public String toString() {
-		return "CompletedTask [id=" + id + ", name=" + name + ", dueTime=" + dueTime + ", user=" + user + ", cause=" + cause + ", completionTime="
-				+ completionTime + "]";
+		return "CompletedTask [id=" + id + ", name=" + name + ", dueTime=" + dueTime + ", user=" + user + ", cause=" + cause + ", completionTime=" + completionTime + "]";
 	}
 
 }
