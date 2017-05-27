@@ -10,5 +10,7 @@ import net.peachmonkey.persistence.model.CompletedTask.Cause;
 
 public interface CompletedTaskRepository extends JpaRepository<CompletedTask, Long> {
 
-	public List<CompletedTask> findByCompletionTimeBetweenAndCauseNot(LocalDateTime lastMidnight, LocalDateTime nextMidnight, Cause cause);
+	public List<CompletedTask> findByCompletionTimeBetweenAndCauseNotIn(LocalDateTime lastMidnight, LocalDateTime nextMidnight, List<Cause> causes);
+
+	public List<CompletedTask> findByCompletionTimeAfterAndCauseNotIn(LocalDateTime time, List<Cause> causes);
 }

@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Routine {
@@ -19,7 +18,7 @@ public class Routine {
 	private Long id;
 	@Column(unique = true)
 	private String name;
-	@OneToMany
+	@ManyToMany
 	private List<RoutineTask> tasks = new ArrayList<>();
 	@ManyToMany
 	private List<RoutineDay> days = new ArrayList<>();

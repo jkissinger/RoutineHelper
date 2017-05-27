@@ -2,10 +2,12 @@ package net.peachmonkey.controller;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,7 +35,14 @@ public class CompletedTaskController {
 	public List<CompletedTask> getTasksCompletedToday() {
 		LocalDateTime lastMidnight = LocalDateTime.now().truncatedTo(ChronoUnit.DAYS);
 		LocalDateTime nextMidnight = lastMidnight.plusDays(1);
-		List<CompletedTask> tasks = repo.findByCompletionTimeBetweenAndCauseNot(lastMidnight, nextMidnight, Cause.REASSIGNED);
+		List<CompletedTask> tasks = repo.findByCompletionTimeBetweenAndCauseNotIn(lastMidnight, nextMidnight, Arrays.asList(Cause.REASSIGNED, Cause.EXPIRED));
+		tasks.sort(Comparator.comparing(CompletedTask::getCompletionTime));
+		return tasks;
+	}
+
+	@RequestMapping(value = "/getTasksCompletedSince", method = RequestMethod.PUT)
+	public List<CompletedTask> getTasksCompletedSince(@RequestBody LocalDateTime cutoff) {
+		List<CompletedTask> tasks = repo.findByCompletionTimeAfterAndCauseNotIn(cutoff, Arrays.asList(Cause.REASSIGNED, Cause.EXPIRED));
 		tasks.sort(Comparator.comparing(CompletedTask::getCompletionTime));
 		return tasks;
 	}

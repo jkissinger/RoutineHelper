@@ -38,6 +38,11 @@ public class PendingTaskController {
 		return repo.findOneByUserNameAndName(userName, taskName);
 	}
 
+	@RequestMapping(value = "/getNextPendingTask", method = RequestMethod.GET)
+	public PendingTask getNextPendingTask(String userName) {
+		return repo.findFirstByUserNameOrderByDueTime(userName);
+	}
+
 	@RequestMapping(value = "/generatePendingTasks", method = RequestMethod.POST)
 	public void generatePendingTasks() {
 		taskUtils.generatePendingTasks();

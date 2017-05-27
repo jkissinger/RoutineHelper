@@ -1,7 +1,6 @@
 package net.peachmonkey.persistence.model;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +15,7 @@ public class CompletedTask {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private LocalTime dueTime;
+	private LocalDateTime dueTime;
 	@ManyToOne
 	private RoutineUser user;
 	private Cause cause;
@@ -38,11 +37,11 @@ public class CompletedTask {
 		this.name = name;
 	}
 
-	public LocalTime getDueTime() {
+	public LocalDateTime getDueTime() {
 		return dueTime;
 	}
 
-	public void setDueTime(LocalTime dueTime) {
+	public void setDueTime(LocalDateTime dueTime) {
 		this.dueTime = dueTime;
 	}
 

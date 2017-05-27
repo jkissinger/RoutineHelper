@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import org.junit.Test;
@@ -14,6 +15,15 @@ public class LocalTimeTest {
 	public void test() throws JsonProcessingException {
 		ObjectMapper mapper = new ObjectMapper();
 		LocalTime time = LocalTime.NOON;
+		System.out.println(mapper.writeValueAsString(time));
+		// {"name":"asdfdasf","notifyTime":{"hour":2,"minute":3}}
+	}
+
+	@Test
+	public void test1() throws JsonProcessingException {
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.findAndRegisterModules();
+		LocalDateTime time = LocalDateTime.now();
 		System.out.println(mapper.writeValueAsString(time));
 		// {"name":"asdfdasf","notifyTime":{"hour":2,"minute":3}}
 	}

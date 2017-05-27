@@ -63,7 +63,7 @@ public class TaskUtils {
 			for (RoutineUser user : task.getUsers()) {
 				PendingTask pendingTask = new PendingTask();
 				pendingTask.setName(task.getName());
-				pendingTask.setDueTime(task.getDueTime());
+				pendingTask.setDueTime(task.getDueTime().atDate(LocalDate.now()));
 				pendingTask.setUser(user);
 				pendingRepo.save(pendingTask);
 				LOGGER.info("Generated PendingTask for Routine=[{}], Task=[{}], User=[{}] due @ [{}].", routine.getName(), task.getName(), user.getName(), task.getDueTime());

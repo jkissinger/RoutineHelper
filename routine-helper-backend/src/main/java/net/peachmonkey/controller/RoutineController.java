@@ -95,7 +95,7 @@ public class RoutineController {
 	}
 
 	@RequestMapping(value = "/createOrUpdateRoutine", method = RequestMethod.POST)
-	public Routine createOrUpdateUser(@RequestBody Routine routine) {
+	public Routine createOrUpdateRoutine(@RequestBody Routine routine) {
 		Routine persisted = null;
 		if (routine.getId() != null) {
 			persisted = repo.findOne(routine.getId());
