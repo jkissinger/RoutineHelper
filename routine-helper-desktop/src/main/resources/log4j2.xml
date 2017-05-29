@@ -12,8 +12,8 @@
         </Console>
         <RollingFile
             name="RollingFile"
-            fileName="E:/Logs/${app-name}.log"
-            filePattern="E:/Logs/archive/${app-name}-%d{MM-dd-yyyy}-%i.log">
+            fileName="Logs/${app-name}.log"
+            filePattern="Logs/archive/${app-name}-%d{MM-dd-yyyy}-%i.log">
             <PatternLayout>
                 <Pattern>${pattern-layout}</Pattern>
             </PatternLayout>

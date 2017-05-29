@@ -12,3 +12,5 @@ sound:
     seconds:
       beforeDue: 300
       afterDue: 3600
+  quietTime.start: '11:00:00'
+  quietTime.end: '12:00:00'

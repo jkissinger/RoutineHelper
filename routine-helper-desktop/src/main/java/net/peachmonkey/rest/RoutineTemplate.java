@@ -9,11 +9,11 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import net.peachmonkey.Constants;
 import net.peachmonkey.persistence.model.CompletedTask;
 import net.peachmonkey.persistence.model.PendingTask;
 import net.peachmonkey.persistence.model.RoutineUser;
 import net.peachmonkey.properties.ApplicationProperties;
-import net.peachmonkey.routine.Constants;
 
 @Component
 public class RoutineTemplate {

@@ -28,7 +28,9 @@ public class CompletedTaskController {
 
 	@RequestMapping(value = "/getCompletedTasks", method = RequestMethod.GET)
 	public List<CompletedTask> getCompletedTasks() {
-		return repo.findAll();
+		List<CompletedTask> tasks = repo.findAll();
+		tasks.sort(Comparator.comparing(CompletedTask::getCompletionTime));
+		return tasks;
 	}
 
 	@RequestMapping(value = "/getTasksCompletedToday", method = RequestMethod.GET)

@@ -50,6 +50,7 @@ public class RoutineTaskController {
 				LOGGER.warn("Attempted to add non-existent RoutineUser[id={}] to RoutineTask[id={}].", userId, taskId);
 			} else if (!task.getUsers().contains(user)) {
 				task.getUsers().add(user);
+				LOGGER.info("Added RoutineUser[id={}] to RoutineTask[id={}].", userId, taskId);
 				return repo.save(task);
 			}
 			return task;
@@ -68,6 +69,7 @@ public class RoutineTaskController {
 				LOGGER.warn("Attempted to remove non-existent RoutineUser[id={}] from RoutineTask[id={}].", userId, taskId);
 			} else if (task.getUsers().contains(user)) {
 				task.getUsers().remove(user);
+				LOGGER.info("Removed RoutineUser[id={}] from RoutineTask[id={}].", userId, taskId);
 				return repo.save(task);
 			}
 			return task;
