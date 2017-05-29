@@ -52,7 +52,6 @@ export class RoutineTaskService {
     }
 
     createOrUpdate(routineTask: RoutineTask): Promise<RoutineTask> {
-        console.log("createOrUpdate: " + JSON.stringify(routineTask)); // TODO Remove, debugging only
         return this.http
             .post(AppSettings.API_ENDPOINT + 'createOrUpdateTask', JSON.stringify(routineTask), { headers: AppSettings.CONTENT_TYPE_HEADERS })
             .toPromise()

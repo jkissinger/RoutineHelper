@@ -34,7 +34,6 @@ export class RoutineService {
     }
 
     createOrUpdate(routine: Routine): Promise<Routine> {
-        console.log("createOrUpdate: " + JSON.stringify(routine));
         return this.http
             .post(AppSettings.API_ENDPOINT + 'createOrUpdate', JSON.stringify(routine), { headers: AppSettings.CONTENT_TYPE_HEADERS })
             .toPromise()

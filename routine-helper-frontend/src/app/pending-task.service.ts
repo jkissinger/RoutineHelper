@@ -24,7 +24,6 @@ export class PendingTaskService {
     }
 
     updatePendingTask(task: PendingTask): Promise<PendingTask> {
-        console.log("Updating: " + JSON.stringify(task));
         return this.http
             .post(AppSettings.API_ENDPOINT + 'updatePendingTask', JSON.stringify(task), { headers: AppSettings.CONTENT_TYPE_HEADERS })
             .toPromise()

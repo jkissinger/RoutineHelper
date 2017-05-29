@@ -85,7 +85,7 @@ export class UpdatePendingTaskComponent {
     let task = new PendingTask();
     task.id = this.task.id;
     task.name = this.task.name;
-    task.dueTime = AppGlobal.toTimeString(dueTime);
+    task.dueTime = AppGlobal.toTimeTodayString(dueTime);
     this.pendingTaskService.updatePendingTask(task).then(result => this.dialogRef.close(`${result}`));
   }
 }
