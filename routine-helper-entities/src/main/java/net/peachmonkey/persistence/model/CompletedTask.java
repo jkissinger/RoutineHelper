@@ -1,6 +1,7 @@
 package net.peachmonkey.persistence.model;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -67,6 +68,20 @@ public class CompletedTask {
 
 	public void setCompletionTime(LocalDateTime completionTime) {
 		this.completionTime = completionTime;
+	}
+
+	@Override
+	public boolean equals(final Object other) {
+		if (!(other instanceof CompletedTask)) {
+			return false;
+		}
+		CompletedTask castOther = (CompletedTask) other;
+		return Objects.equals(name, castOther.name) && Objects.equals(user, castOther.user) && Objects.equals(completionTime, castOther.completionTime);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, user, completionTime);
 	}
 
 	@Override

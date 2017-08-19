@@ -37,14 +37,14 @@ public class TaskUtils {
 	@Autowired
 	private CompletedTaskRepository completedRepo;
 
-	@Scheduled(cron = "0 0 23 * * *")
+	@Scheduled(cron = "0 30 23 * * *")
 	public void expirePendingTasks() {
 		for (PendingTask task : pendingRepo.findAll()) {
 			completePendingTask(task, Cause.EXPIRED);
 		}
 	}
 
-	@Scheduled(cron = "0 0 1 * * *")
+	@Scheduled(cron = "0 30 0 * * *")
 	@Transactional
 	public void generatePendingTasks() {
 		for (Routine routine : routineRepo.findAll()) {

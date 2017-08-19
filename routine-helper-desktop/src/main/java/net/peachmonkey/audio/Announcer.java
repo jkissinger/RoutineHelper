@@ -56,13 +56,11 @@ public class Announcer {
 	private boolean isAnnounceable(PendingTask task, TaskStatus status, long secondsUntilDue) {
 		if (props.getSoundQuietTimeStart().isBefore(LocalTime.now()) || props.getSoundQuietTimeEnd().isAfter(LocalTime.now())) {
 			// In the quiet time, nothing is announceable.
-			LOGGER.trace("Task is not announceable because it is quiet time. {}", task);
 			return false;
 		}
 
 		if (secondsUntilDue > props.getSoundAnnounceSecondsBeforeDue() || secondsUntilDue * -1 > props.getSoundAnnounceSecondsAfterDue()) {
 			// Not ready to announce yet, or too old to still be announced.
-			LOGGER.trace("Task is not announceable because it is not ready to be announced yet or too old to be announced. {}, seconds until due={}", task, secondsUntilDue);
 			return false;
 		}
 

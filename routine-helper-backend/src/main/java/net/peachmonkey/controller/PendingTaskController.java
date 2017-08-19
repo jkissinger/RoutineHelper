@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.peachmonkey.TaskUtils;
@@ -34,12 +35,12 @@ public class PendingTaskController {
 	}
 
 	@RequestMapping(value = "/getPendingTask", method = RequestMethod.GET)
-	public PendingTask getPendingTask(String userName, String taskName) {
+	public PendingTask getPendingTask(@RequestParam String userName, @RequestParam String taskName) {
 		return repo.findOneByUserNameAndName(userName, taskName);
 	}
 
 	@RequestMapping(value = "/getNextPendingTask", method = RequestMethod.GET)
-	public PendingTask getNextPendingTask(String userName) {
+	public PendingTask getNextPendingTask(@RequestParam String userName) {
 		return repo.findFirstByUserNameOrderByDueTime(userName);
 	}
 
@@ -54,7 +55,7 @@ public class PendingTaskController {
 	}
 
 	@RequestMapping(value = "/completePendingTask", method = RequestMethod.POST)
-	public CompletedTask completePendingTask(Long id, Cause cause) {
+	public CompletedTask completePendingTask(@RequestParam Long id, @RequestParam Cause cause) {
 		return taskUtils.completePendingTask(id, cause);
 	}
 

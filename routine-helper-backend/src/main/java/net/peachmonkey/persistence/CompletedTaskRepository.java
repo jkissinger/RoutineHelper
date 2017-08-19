@@ -13,4 +13,8 @@ public interface CompletedTaskRepository extends JpaRepository<CompletedTask, Lo
 	public List<CompletedTask> findByCompletionTimeBetweenAndCauseNotIn(LocalDateTime lastMidnight, LocalDateTime nextMidnight, List<Cause> causes);
 
 	public List<CompletedTask> findByCompletionTimeAfterAndCauseNotIn(LocalDateTime time, List<Cause> causes);
+
+	public List<CompletedTask> findByCauseAndName(Cause cause, String name);
+
+	public List<CompletedTask> findByCauseAndNameAndUserName(Cause cause, String name, String userName);
 }

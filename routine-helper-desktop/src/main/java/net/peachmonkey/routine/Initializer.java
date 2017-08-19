@@ -1,7 +1,9 @@
 package net.peachmonkey.routine;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,6 +26,7 @@ public class Initializer {
 	@Autowired
 	private Announcer announcer;
 	private LocalDateTime lastCompletionAnnouncement = LocalDateTime.now();
+	private Set<CompletedTask> announcedCompletedTasks = new HashSet<>();
 
 	@Scheduled(fixedDelay = 5000)
 	public void init() {
@@ -55,7 +58,13 @@ public class Initializer {
 		for (CompletedTask task : tasks) {
 			// Announce the actual task as well?
 			// TODO: Announce cancelled tasks differently
-			announcer.announceTaskCompletion(task);
+			if (!announcedCompletedTasks.contains(task)) {
+				announcer.announceTaskCompletion(task);
+				announcedCompletedTasks.add(task);
+			}
+		}
+		if (tasks.isEmpty()) {
+			announcedCompletedTasks.clear();
 		}
 	}
 }
